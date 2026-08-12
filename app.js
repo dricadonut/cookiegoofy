@@ -1,61 +1,25 @@
-const products = [
-  {id:1,name:"Goofy Classic Tee",price:29.90,badge:"NEW",tag:"STAY GOOFY"},
-  {id:2,name:"Everyday Heavy Tee",price:34.90,badge:"ESSENTIAL",tag:"MAKE IT YOURS"},
-  {id:3,name:"Cookie Club Sweatshirt",price:49.90,badge:"NEW",tag:"COOKIE CLUB"},
-  {id:4,name:"Goofy Everyday Hoodie",price:64.90,badge:"LIMITED",tag:"NOT FOR EVERYONE"}
-];
-
-let cart = JSON.parse(localStorage.getItem("cookieGoofyCart") || "[]");
-
-const money = n => new Intl.NumberFormat("en-IE",{style:"currency",currency:"EUR"}).format(n);
-
-function renderProducts(){
-  const grid = document.getElementById("productGrid");
-  grid.innerHTML = products.map(p => `
-    <article class="product-card" onclick="addToCart(${p.id})" title="Demo: click to add">
-      <div class="product-image">
-        <span class="product-badge">${p.badge}</span>
-        <div class="shirt"><span>${p.tag}</span></div>
-      </div>
-      <div class="product-info">
-        <div class="product-name">${p.name}</div>
-        <div class="product-meta"><span>Unisex · Made to order</span><span>${money(p.price)}</span></div>
-      </div>
-    </article>
-  `).join("");
-}
-
-function save(){localStorage.setItem("cookieGoofyCart",JSON.stringify(cart));}
-function addToCart(id){
-  const product=products.find(p=>p.id===id);
-  const existing=cart.find(x=>x.id===id);
-  if(existing) existing.qty++;
-  else cart.push({...product,qty:1});
-  save(); renderCart(); openCart();
-}
-function removeFromCart(id){cart=cart.filter(x=>x.id!==id);save();renderCart();}
-function renderCart(){
-  document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
-  const box=document.getElementById("cartItems");
-  if(!cart.length){box.innerHTML='<p>Your bag is empty. Find something a little goofy.</p>';document.getElementById("cartTotal").textContent=money(0);return;}
-  box.innerHTML=cart.map(x=>`
-    <div class="cart-item">
-      <div class="cart-item-art"><div class="mini-shirt"></div></div>
-      <div class="cart-item-info"><strong>${x.name}</strong><p>Quantity: ${x.qty}<br>${money(x.price*x.qty)}</p><button class="remove" onclick="removeFromCart(${x.id})">Remove</button></div>
-    </div>`).join("");
-  document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0));
-}
-function openCart(){document.getElementById("cartDrawer").classList.add("open");document.getElementById("overlay").classList.add("open");document.getElementById("cartDrawer").setAttribute("aria-hidden","false");}
-function closeCart(){document.getElementById("cartDrawer").classList.remove("open");document.getElementById("overlay").classList.remove("open");document.getElementById("cartDrawer").setAttribute("aria-hidden","true");}
-document.getElementById("cartButton").onclick=openCart;
-document.getElementById("closeCart").onclick=closeCart;
-document.getElementById("overlay").onclick=closeCart;
-document.getElementById("checkoutButton").onclick=()=>{
-  alert("Checkout is intentionally not simulated. Connect this button to your real Printify Pop-Up Store after creating it.");
-};
-document.getElementById("newsletterForm").addEventListener("submit",e=>{
-  e.preventDefault();
-  document.getElementById("newsletterMessage").textContent="You're on the list. Welcome to the goofy side.";
-  e.target.reset();
-});
-renderProducts();renderCart();
+const P=[
+{id:"001",n:"Weird Behaviour Tee",p:32,c:"T-Shirts",b:"NEW",t:"WEIRD BEHAVIOUR"},
+{id:"002",n:"Stay Weird Tee",p:32,c:"T-Shirts",b:"BESTSELLER",t:"STAY WEIRD"},
+{id:"003",n:"Cookie Club Sweatshirt",p:54,c:"Sweatshirts",b:"NEW",t:"COOKIE CLUB"},
+{id:"004",n:"Goofy Internet Hoodie",p:69,c:"Hoodies",b:"LIMITED",t:"GOOFY.EXE"}];
+let cart=JSON.parse(localStorage.cgCart||"[]");const $=s=>document.querySelector(s), money=n=>new Intl.NumberFormat("en-IE",{style:"currency",currency:"EUR"}).format(n);
+if(localStorage.cgDark==="1")document.body.classList.add("dark");
+function art(p){return `<div class="shirt"><span>${p.t}</span></div>`}
+function card(p){return `<article class="product" onclick="go('#/product/${p.id}')"><div class="pic"><span class="badge">${p.b}</span>${art(p)}<i class="cookie c1"></i></div><div class="meta"><div><span>${p.n}</span><strong>${money(p.p)}</strong></div><small>${p.c} · Made to order</small></div></article>`}
+function grid(a){return `<div class="products">${a.map(card).join("")}</div>`}
+function home(){return `<section class="hero"><div class="heroCopy"><p class="eyebrow">COOKIE GOOFY / 001</p><h1>STAY<br><em>WEIRD.</em><br>EAT<br>COOKIES.</h1><p>Independent pieces for people who think ordinary is a little overrated.</p><a class="cta dark" href="#/shop">SHOP THE DROP ↗</a></div><div class="heroArt"><div class="photo">YOUR<br>EDITORIAL<br>PHOTO</div><i class="cookie c1"></i><i class="cookie c2"></i></div></section><div class="marquee"><span>COOKIE GOOFY ✦ STAY WEIRD ✦ EAT COOKIES ✦ MADE TO ORDER ✦ LESS WASTE ✦ COOKIE GOOFY ✦ STAY WEIRD ✦ EAT COOKIES ✦ MADE TO ORDER ✦ LESS WASTE ✦</span></div><section class="section"><div class="sectionHead"><div><p class="eyebrow">THE NEW DROP</p><h2>GOOFY<br>THINGS.</h2></div><a class="link" href="#/shop">VIEW ALL ↗</a></div>${grid(P)}</section><section class="ethics"><div><p class="eyebrow">MADE WITH INTENTION</p><h2>BUY LESS.<br>LIKE IT<br>MORE.</h2></div><div><p>We make pieces to order instead of filling warehouses with piles of clothes waiting for someone to want them. Less unnecessary stock, more intentional production and room for personality.</p><div class="pills"><span class="pill">MADE TO ORDER</span><span class="pill">LESS OVERPRODUCTION</span><span class="pill">MATERIAL TRANSPARENCY</span><span class="pill">PRINT ON DEMAND</span></div></div></section><section class="editorial"><div><p class="eyebrow">THE GOOFY POINT OF VIEW</p><h2>Fashion should be a little ridiculous.</h2><p>Not loud for the sake of being loud. Not serious for the sake of looking expensive. Just memorable enough that someone asks where you got it.</p><a class="link" href="#/about">MEET COOKIE GOOFY ↗</a></div><div class="editorialPic">YOUR<br>EDITORIAL<br>IMAGE</div></section><section class="section"><div class="sectionHead"><div><p class="eyebrow">FAVOURITES</p><h2>THE ONES<br>PEOPLE NOTICE.</h2></div><a class="link" href="#/shop">SHOP ALL ↗</a></div>${grid(P.slice(0,3))}</section><section class="journal"><div class="sectionHead"><div><p class="eyebrow">FROM THE JOURNAL</p><h2>GOOFY<br>NOTES.</h2></div><a class="link" href="#/journal">READ ALL ↗</a></div><div class="journalGrid"><article class="journalCard"><small>STYLE / 01</small><h3>How to make a simple outfit feel like yours.</h3></article><article class="journalCard"><small>CARE / 02</small><h3>How to make your favourite tee last longer.</h3></article><article class="journalCard"><small>STORY / 03</small><h3>Why normal was not enough.</h3></article></div></section><section class="club"><div><p class="eyebrow">THE COOKIE CLUB</p><h2>COOKY<br>CLUB.</h2></div><div><p>New drops, limited pieces, early access and occasional nonsense. No inbox chaos. Promise.</p><form onsubmit="club(event)"><input type="email" required placeholder="your@email.com"><button>JOIN ↗</button></form><small id="clubMsg"></small></div></section>`}
+function shop(newOnly=false){let a=newOnly?P.slice(0,2):P;return `<section class="page"><div class="pageHead"><p class="eyebrow">${newOnly?"JUST LANDED":"THE SHOP"}</p><h1>${newOnly?"NEW & GOOFY":"SHOP EVERYTHING."}</h1><p>Pieces with a little more character. Filter the collection, pick your weird, and make it yours.</p></div><div class="toolbar"><div class="filters"><button class="filter active" onclick="filter('all',this)">ALL</button><button class="filter" onclick="filter('T-Shirts',this)">T-SHIRTS</button><button class="filter" onclick="filter('Sweatshirts',this)">SWEATSHIRTS</button><button class="filter" onclick="filter('Hoodies',this)">HOODIES</button></div><span>${a.length} PIECES</span></div><div id="grid">${grid(a)}</div></section>`}
+function product(id){let p=P.find(x=>x.id===id);if(!p)return notFound();return `<section class="productPage"><div class="productLayout"><div class="gallery"><div class="big">YOUR PRODUCT PHOTO</div><div>PHOTO 02</div><div>PHOTO 03</div><div>DETAIL PHOTO</div></div><div class="detail"><p class="eyebrow">${p.c} / ${p.b}</p><h1>${p.n}</h1><div class="price">${money(p.p)}</div><p class="desc">A deliberately uncomplicated piece with a very complicated personality. Designed for an editorial streetwear feel and made to order.</p><p class="eyebrow">SIZE</p><div class="sizes">${["XS","S","M","L","XL","XXL"].map((x,i)=>`<button class="size ${i==2?"selected":""}" onclick="size(this)">${x}</button>`).join("")}</div><button class="cta dark" onclick="add('${p.id}')">ADD TO BAG ↗</button><button class="wish" onclick="toast('SAVED TO YOUR WISHLIST ✦')">♡ ADD TO WISHLIST</button><div class="accordion">${acc("THE DETAILS","Replace this copy with the final garment composition, fit, care and Printify product specifications before launch.")}${acc("PRODUCTION","Made to order through a print-on-demand workflow. The final fulfillment details will be connected in Phase 2.")}${acc("SHIPPING & RETURNS","Final delivery estimates and the legally approved returns policy will be shown here before launch.")}</div></div></div></section>`}
+function acc(a,b){return `<div><button onclick="this.nextElementSibling.classList.toggle('open')">${a}<span>+</span></button><div class="accText">${b}</div></div>`}
+function page(t,i,s){return `<section class="page"><div class="pageHead"><p class="eyebrow">COOKIE GOOFY</p><h1>${t}</h1><p>${i}</p></div><div class="prose">${s.map(x=>`<h2>${x[0]}</h2><p>${x[1]}</p>`).join("")}</div></section>`}
+function about(){return page("OUR STORY","Cookie Goofy exists because clothes can be serious about quality without taking themselves too seriously.",[["THE IDEA","Stay Weird. Eat Cookies. It is less a command and more a reminder that personal style is allowed to be playful."],["THE APPROACH","Original graphics, wearable silhouettes and made-to-order production. Editorial polish, internet energy and a little chaos."]])}
+function materials(){return page("MATERIALS & PRODUCTION","A clearer way to talk about what we make and how we make it.",[["MADE TO ORDER","A product is produced after purchase, reducing the need to hold large quantities of finished stock."],["PRINT ON DEMAND","Artwork is applied to the selected garment as part of the production workflow, then the finished order is packed and shipped."],["TRANSPARENCY","Final product pages will show actual fabric composition, certifications, fit, care and production information."]])}
+function journal(){return page("GOOFY NOTES","Style, care, culture and the occasional thought that probably should have stayed in the group chat.",[["STYLE / 01","How to make a simple outfit feel like yours."],["CARE / 02","How to make your favourite tee last longer."],["STORY / 03","Why normal was not enough."]])}
+function notFound(){return `<section class="notFound"><p class="eyebrow">404 / TOO GOOFY</p><h1>WHOOPS.</h1><a class="cta dark" href="#/">BACK HOME ↗</a></section>`}
+function route(){let path=location.hash.slice(1)||"/",base=path.split("?")[0],h;if(base==="/")h=home();else if(base==="/shop")h=shop();else if(base==="/new")h=shop(true);else if(base.startsWith("/product/"))h=product(base.split("/")[2]);else if(base==="/about")h=about();else if(base==="/materials")h=materials();else if(base==="/journal")h=journal();else if(base==="/contact")h=page("SAY HELLO","Questions, collaborations or just want to say hi?",[["EMAIL","contacto@cookiegoofy.store"],["SOCIAL","Instagram · TikTok · Pinterest can be added before launch."]]);else if(base==="/faq")h=page("FAQ","The answers to common questions.",[["SHIPPING","Final shipping estimates will be shown at checkout."],["SIZING","Every product will have its own measurements and fit notes."],["RETURNS","The final returns policy will be published before launch."]]);else if(base==="/shipping")h=page("SHIPPING","Everything about getting your order.",[["MADE TO ORDER","Orders are produced after purchase."],["TRACKING","A tracking link will be sent when an order is fulfilled."]]);else if(base==="/returns")h=page("RETURNS","Final returns policy.",[["IMPORTANT","This is a design-stage placeholder. Replace it with the legally approved policy before accepting orders."]]);else if(base==="/size-guide")h=page("SIZE GUIDE","Find the fit before you commit.",[["MEASUREMENTS","Final chest, length and sleeve measurements will be displayed per garment."]]);else if(["/privacy","/cookies","/terms"].includes(base))h=page(base.slice(1).toUpperCase(),"Final legal information will be added before launch.",[["IMPORTANT","This is a design-stage placeholder. Replace it with the final legally reviewed policy before accepting real orders."]]);else h=notFound();$("#app").innerHTML=h;scrollTo(0,0);renderBag();$("#mobileNav").classList.remove("open")}
+function go(x){location.hash=x}function save(){localStorage.cgCart=JSON.stringify(cart);renderBag()}function add(id){let x=cart.find(a=>a.id===id);x?x.q++:cart.push({id,q:1});save();openBag();toast("ADDED TO YOUR BAG ✦")}
+function renderBag(){let n=cart.reduce((a,x)=>a+x.q,0);$("#count").textContent=n;let total=cart.reduce((a,x)=>a+P.find(p=>p.id===x.id).p*x.q,0);$("#total").textContent=money(total);$("#items").innerHTML=cart.length?cart.map(x=>{let p=P.find(a=>a.id===x.id);return `<div class="bagItem"><div class="bagPic">${art(p)}</div><div><strong>${p.n}</strong><small>${money(p.p)} · Qty ${x.q}</small><button onclick="removeItem('${x.id}')">REMOVE</button></div><b>${money(p.p*x.q)}</b></div>`}).join(""):`<div class="empty"><img src="assets/cookie-goofy-logo.png"><h3>NOTHING GOOFY YET.</h3><p>Your bag is suspiciously empty.</p></div>`}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);save();toast("REMOVED")}function openBag(){$("#drawer").classList.add("open");$("#overlay").classList.add("open")}function closeBag(){$("#drawer").classList.remove("open");$("#overlay").classList.remove("open")}function toast(t){$("#toast").textContent=t;$("#toast").classList.add("show");setTimeout(()=>$("#toast").classList.remove("show"),2000)}function size(b){document.querySelectorAll(".size").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")}function filter(c,b){document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");$("#grid").innerHTML=grid(c==="all"?P:P.filter(x=>x.c===c))}function club(e){e.preventDefault();$("#clubMsg").textContent="YOU'RE IN. WELCOME TO THE GOOFY SIDE ✦";e.target.reset()}
+$("#bag").onclick=openBag;$("#closeBag").onclick=closeBag;$("#overlay").onclick=closeBag;$("#continue").onclick=closeBag;$("#checkout").onclick=()=>toast("CHECKOUT COMING IN PHASE 2");$("#theme").onclick=()=>{document.body.classList.toggle("dark");localStorage.cgDark=document.body.classList.contains("dark")?"1":"0"};$("#hamb").onclick=()=>$("#mobileNav").classList.toggle("open");$("#search").onclick=()=>{$("#searchPanel").classList.add("open");$("#searchInput").focus()};$("#closeSearch").onclick=()=>$("#searchPanel").classList.remove("open");$("#searchInput").oninput=e=>{let q=e.target.value.toLowerCase();$("#results").innerHTML=q?P.filter(p=>(p.n+p.c+p.t).toLowerCase().includes(q)).map(p=>`<a class="result" href="#/product/${p.id}"><span>${p.n}</span><b>${money(p.p)}</b></a>`).join(""):""};addEventListener("hashchange",route);route();addEventListener("load",()=>setTimeout(()=>$("#loader").classList.add("hide"),600));
+const cur=$("#cursor");if(cur&&matchMedia("(pointer:fine)").matches){addEventListener("mousemove",e=>cur.style.transform=`translate(${e.clientX+12}px,${e.clientY+12}px)`);document.addEventListener("mouseover",e=>cur.classList.toggle("big",!!e.target.closest("a,button,.product")))}

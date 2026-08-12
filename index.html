@@ -1,127 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cookie Goofy — original, expressive clothing for people who don't dress like everyone else.">
-  <meta name="theme-color" content="#f5f1e8">
-  <title>Cookie Goofy — Wear Something Different.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="announcement">FREE SHIPPING ON ORDERS OVER €75 · MADE TO ORDER</div>
-
-  <header class="site-header">
-    <a class="logo" href="#top" aria-label="Cookie Goofy home">
-      <span class="logo-cookie">●</span> COOKIE GOOFY
-    </a>
-    <nav>
-      <a href="#shop">Shop</a>
-      <a href="#story">Our story</a>
-      <a href="#materials">Materials</a>
-      <a href="#journal">Journal</a>
-    </nav>
-    <button class="cart-button" id="cartButton">Bag <span id="cartCount">0</span></button>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">NEW DROP / 001</p>
-        <h1>WEAR<br><em>SOMETHING</em><br>DIFFERENT.</h1>
-        <p class="hero-text">Original pieces for people with their own thing going on.</p>
-        <a class="button button-dark" href="#shop">SHOP THE DROP <span>↗</span></a>
-      </div>
-      <div class="hero-art" aria-label="Cookie Goofy editorial artwork">
-        <div class="cookie-character">
-          <div class="eye eye-left"></div><div class="eye eye-right"></div>
-          <div class="mouth"></div>
-          <div class="chip chip-1"></div><div class="chip chip-2"></div><div class="chip chip-3"></div>
-        </div>
-        <span class="art-note note-one">NOT FOR EVERYONE.</span>
-        <span class="art-note note-two">001 / GOOFY</span>
-      </div>
-    </section>
-
-    <section class="marquee"><div>ORIGINAL DESIGNS · MADE TO ORDER · LESS WASTE · MORE PERSONALITY · </div></section>
-
-    <section class="section" id="shop">
-      <div class="section-heading">
-        <div><p class="eyebrow">THE COLLECTION</p><h2>NEW &amp; GOOFY</h2></div>
-        <a href="#shop" class="text-link">VIEW ALL ↗</a>
-      </div>
-      <div class="product-grid" id="productGrid"></div>
-    </section>
-
-    <section class="statement" id="story">
-      <p class="eyebrow">THE COOKIE GOOFY IDEA</p>
-      <h2>NOT ANOTHER<br><span>BASIC TEE.</span></h2>
-      <p>Cookie Goofy is for people who like their clothes with a little more character. We make expressive, wearable pieces designed to feel personal — not mass-produced.</p>
-      <a class="button button-outline" href="#materials">WHY WE MAKE IT ↗</a>
-    </section>
-
-    <section class="split-section" id="materials">
-      <div class="split-image">
-        <div class="material-art"><span>BETTER<br>MATERIALS</span></div>
-      </div>
-      <div class="split-copy">
-        <p class="eyebrow">MADE WITH INTENTION</p>
-        <h2>BUY LESS.<br>LIKE IT MORE.</h2>
-        <p>We prefer made-to-order production where it makes sense, so we don't need to fill warehouses with piles of unsold stock. Product materials and certifications are shown transparently on each product page.</p>
-        <div class="principles">
-          <div><strong>01</strong><span>Original designs</span></div>
-          <div><strong>02</strong><span>Made to order</span></div>
-          <div><strong>03</strong><span>Material transparency</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="journal">
-      <div class="section-heading">
-        <div><p class="eyebrow">THE JOURNAL</p><h2>GOOFY NOTES</h2></div>
-      </div>
-      <div class="journal-grid">
-        <article><span>STYLE / 01</span><h3>How to make a simple outfit feel like yours.</h3><a href="#">READ ↗</a></article>
-        <article><span>CARE / 02</span><h3>How to make your favourite tee last longer.</h3><a href="#">READ ↗</a></article>
-        <article><span>STORY / 03</span><h3>Why we started Cookie Goofy.</h3><a href="#">READ ↗</a></article>
-      </div>
-    </section>
-
-    <section class="newsletter">
-      <p class="eyebrow">THE GOOFY CLUB</p>
-      <h2>FIRST DIBS.<br>NO SPAM.</h2>
-      <p>New drops, limited pieces and occasional nonsense.</p>
-      <form id="newsletterForm">
-        <input type="email" id="email" placeholder="your@email.com" required>
-        <button type="submit">JOIN ↗</button>
-      </form>
-      <small id="newsletterMessage"></small>
-    </section>
-  </main>
-
-  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
-    <div class="cart-header"><h2>Your bag</h2><button id="closeCart">×</button></div>
-    <div id="cartItems" class="cart-items"></div>
-    <div class="cart-footer">
-      <div><span>Subtotal</span><strong id="cartTotal">€0.00</strong></div>
-      <p>Taxes and shipping are calculated at checkout.</p>
-      <button class="button button-dark full" id="checkoutButton">CHECKOUT ↗</button>
-      <small>Demo checkout. Connect this button to your Printify Pop-Up Store when the store is ready.</small>
-    </div>
-  </aside>
-  <div class="overlay" id="overlay"></div>
-
-  <footer>
-    <div class="footer-brand"><span>COOKIE GOOFY</span><p>Clothes for people who don't take life too seriously.</p></div>
-    <div><a href="#shop">Shop</a><a href="#story">About</a><a href="#materials">Materials</a></div>
-    <div><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Privacy</a></div>
-    <div><a href="#">Instagram</a><a href="#">TikTok</a><a href="mailto:hello@cookiegoofy.pt">Contact</a></div>
-    <p class="copyright">© 2026 Cookie Goofy. All rights reserved.</p>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cookie Goofy — Stay Weird. Eat Cookies.</title>
+<meta name="description" content="Cookie Goofy — independent Y2K-inspired fashion. Stay Weird. Eat Cookies.">
+<link rel="icon" href="assets/cookie-goofy-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"></head><body>
+<div class="loader" id="loader"><img src="assets/cookie-goofy-logo.png"><small>LOADING GOOFY...</small></div>
+<div class="announce">FREE SHIPPING OVER €75　✦　MADE TO ORDER　✦　STAY WEIRD.</div>
+<header><button class="hamb" id="hamb">☰</button><a class="logo" href="#/"><img src="assets/cookie-goofy-logo.png">COOKIE GOOFY</a>
+<nav><a href="#/shop">SHOP</a><a href="#/new">NEW</a><a href="#/about">ABOUT</a><a href="#/journal">JOURNAL</a></nav>
+<div class="actions"><button id="search">⌕</button><button id="theme">◐</button><button id="bag">BAG <b id="count">0</b></button></div></header>
+<div class="mobile-nav" id="mobileNav"><a href="#/shop">SHOP</a><a href="#/new">NEW</a><a href="#/about">ABOUT</a><a href="#/materials">MATERIALS</a><a href="#/journal">JOURNAL</a><a href="#/faq">FAQ</a></div>
+<div class="search" id="searchPanel"><div><button id="closeSearch">×</button><small>SEARCH COOKIE GOOFY</small><input id="searchInput" placeholder="hoodie, tee, weird..."><div id="results"></div></div></div>
+<main id="app"></main>
+<aside class="drawer" id="drawer"><div class="drawerHead"><h2>YOUR BAG</h2><button id="closeBag">×</button></div><div id="items"></div><div class="drawerFoot"><div><span>SUBTOTAL</span><strong id="total">€0.00</strong></div><button class="cta dark" id="checkout">CHECKOUT ↗</button><button class="plain" id="continue">CONTINUE SHOPPING</button></div></aside><div class="overlay" id="overlay"></div>
+<footer><div><img src="assets/cookie-goofy-logo.png"><strong>COOKIE GOOFY</strong><p>STAY WEIRD. EAT COOKIES.</p></div><div><b>SHOP</b><a href="#/shop">All pieces</a><a href="#/new">New drop</a><a href="#/shop?cat=T-Shirts">T-Shirts</a><a href="#/shop?cat=Hoodies">Hoodies</a></div><div><b>ABOUT</b><a href="#/about">Our story</a><a href="#/materials">Materials</a><a href="#/journal">Journal</a><a href="#/contact">Contact</a></div><div><b>HELP</b><a href="#/faq">FAQ</a><a href="#/shipping">Shipping</a><a href="#/returns">Returns</a><a href="#/size-guide">Size guide</a></div><div><b>LEGAL</b><a href="#/privacy">Privacy</a><a href="#/cookies">Cookies</a><a href="#/terms">Terms</a><a href="mailto:contacto@cookiegoofy.store">Email</a></div><small class="copy">© 2026 COOKIE GOOFY</small></footer>
+<div class="cursor" id="cursor"><img src="assets/cookie-goofy-logo.png"></div><div class="toast" id="toast"></div>
+<script src="app.js"></script></body></html>
