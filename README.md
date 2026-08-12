@@ -1,12 +1,38 @@
-# Cookie Goofy V3
+# Cookie Goofy V3.1
 
-Editorial Y2K / retro / weirdly premium storefront prototype.
+This is the corrected static storefront version.
 
-## Publish
-Upload the contents of this folder to the root of the GitHub Pages repository. Keep `CNAME` at the repository root.
+Key change from V3:
+- The homepage content is written directly in `index.html`.
+- JavaScript is only used for enhancements (cart, product modal, search, theme, mobile menu).
+- If JavaScript fails, the main visual layout still renders instead of leaving a blank page.
+- The official Cookie Goofy logo is in `assets/cookie-goofy-logo.png`.
+- `CNAME` is included for `cookiegoofy.store`.
 
-## Product photos
-Replace the labelled photo placeholders in `app.js`/`styles.css` later with the final campaign/product images.
+## GitHub Pages
 
-## Checkout
-Checkout is intentionally a Phase 2 placeholder. Payment processing and Printify fulfilment are not connected in this static V3.
+Upload/replace these files at the repository root:
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `CNAME`
+- `assets/cookie-goofy-logo.png`
+
+Do not upload the ZIP itself as the website root.
+
+## Product photography
+
+The design currently uses clearly marked editorial placeholders:
+- HERO IMAGE / REPLACE ME
+- YOUR EDITORIAL PHOTO
+- YOUR PRODUCT HERO PHOTO
+- FRONT PHOTO
+- DETAIL PHOTO
+- BACK PHOTO
+
+These are intentionally ready for the real campaign/product photography.
+
+## Phase 2
+
+The checkout button is a placeholder until a real payment processor and Printify API integration are configured. Do not treat the current checkout as a live payment system.

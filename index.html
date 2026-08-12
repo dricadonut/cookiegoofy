@@ -1,67 +1,274 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-PT">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cookie Goofy — Stay Weird. Eat Cookies.</title>
   <meta name="description" content="Cookie Goofy — weirdly premium clothing for unusual people.">
   <link rel="icon" href="assets/cookie-goofy-logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="loader" id="loader"><img src="assets/cookie-goofy-logo.png"><span>COOKIE GOOFY / LOADING...</span></div>
+  <div class="announcement">STAY WEIRD. EAT COOKIES. <span>✦</span> MADE TO ORDER <span>✦</span> WEIRDLY PREMIUM <span>✦</span> FREE SHIPPING OVER €75 <span>✦</span></div>
 
-  <div class="ticker"><div>STAY WEIRD. EAT COOKIES. <i>✦</i> MADE TO ORDER <i>✦</i> WEIRDLY PREMIUM <i>✦</i> FREE SHIPPING OVER €75 <i>✦</i> STAY WEIRD. EAT COOKIES. <i>✦</i> MADE TO ORDER <i>✦</i></div></div>
+  <header class="header">
+    <button class="mobile-toggle" aria-label="Abrir menu"><span></span><span></span></button>
+    <a href="#top" class="logo-lockup">
+      <img src="assets/cookie-goofy-logo.png" alt="Cookie Goofy">
+      <span>COOKIE<br>GOOFY</span>
+    </a>
 
-  <header class="site-header">
-    <button class="menu-button" id="menuBtn" aria-label="Open menu"><span></span><span></span></button>
-    <a class="brand" href="#/"><img src="assets/cookie-goofy-logo.png" alt="Cookie Goofy"><span>COOKIE<br>GOOFY</span></a>
-    <nav class="desktop-nav">
-      <a href="#/shop">SHOP</a><a href="#/new">NEW</a><a href="#/about">ABOUT</a><a href="#/journal">JOURNAL</a>
+    <nav class="nav">
+      <a href="#shop">SHOP</a>
+      <a href="#new">NEW</a>
+      <a href="#about">ABOUT</a>
+      <a href="#journal">JOURNAL</a>
     </nav>
-    <div class="header-actions">
-      <button id="searchBtn">SEARCH</button><button id="themeBtn" aria-label="Toggle light and dark mode">◐</button><button id="bagBtn">BAG <sup id="bagCount">0</sup></button>
+
+    <div class="actions">
+      <button id="themeToggle" aria-label="Alternar modo claro/escuro">◐</button>
+      <button id="searchToggle">SEARCH</button>
+      <button id="bagToggle">BAG <sup id="bagCount">0</sup></button>
     </div>
   </header>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <div><span>MENU</span><button id="mobileClose">×</button></div>
-    <a href="#/shop">SHOP EVERYTHING</a><a href="#/new">NEW DROP</a><a href="#/about">ABOUT COOKIE GOOFY</a><a href="#/materials">MATERIALS</a><a href="#/journal">JOURNAL</a><a href="#/faq">FAQ</a>
+  <div class="mobile-nav">
+    <a href="#shop">SHOP EVERYTHING</a>
+    <a href="#new">NEW DROP</a>
+    <a href="#about">ABOUT COOKIE GOOFY</a>
+    <a href="#materials">MATERIALS</a>
+    <a href="#journal">JOURNAL</a>
+    <a href="#faq">FAQ</a>
   </div>
 
   <section class="search-panel" id="searchPanel">
-    <button id="searchClose">×</button><span>WHAT ARE YOU LOOKING FOR?</span>
-    <input id="searchInput" placeholder="try “hoodie” or “weird”">
-    <div id="searchResults"></div>
+    <div class="search-inner">
+      <div class="eyebrow">WHAT ARE YOU LOOKING FOR?</div>
+      <button id="searchClose">×</button>
+      <input id="searchInput" type="search" placeholder="try “hoodie”, “cookie” or “weird”">
+      <div id="searchResults"></div>
+    </div>
   </section>
 
-  <main id="app"></main>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-meta"><span>COOKIE GOOFY / 001</span><span>EST. 2026 / EUROPE</span></div>
+
+        <div class="hero-heading">
+          <div class="eyebrow">INDEPENDENT CLOTHING FOR UNUSUAL PEOPLE</div>
+          <h1>STAY<br><em>WEIRD.</em><br>EAT<br>COOKIES.</h1>
+        </div>
+
+        <div class="hero-foot">
+          <p>Clothes for people who think ordinary is a little overrated. Deliberately different. Weirdly premium.</p>
+          <a class="arrow-link" href="#shop">SHOP THE DROP <b>↗</b></a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="image-placeholder">
+          <span>YOUR<br>EDITORIAL<br>CAMPAIGN</span>
+          <small>HERO IMAGE / REPLACE ME</small>
+        </div>
+        <div class="hero-star">✦</div>
+        <div class="hero-cookie"><img src="assets/cookie-goofy-logo.png" alt=""></div>
+      </div>
+    </section>
+
+    <div class="question-bar">
+      <strong>QUE RAIO É ISTO?</strong>
+      <span>GOOD QUESTION. <i>SCROLL DOWN.</i> YOU MIGHT FIND SOMETHING YOU WANT. <b>✦</b></span>
+    </div>
+
+    <section class="section products-section" id="new">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">01 / THE DROP</div>
+          <h2>NEW <em>things.</em></h2>
+        </div>
+        <a class="arrow-link" href="#shop">VIEW ALL <b>↗</b></a>
+      </div>
+
+      <div class="product-grid">
+        <a class="product-card" href="#product-1">
+          <div class="product-image p-green">
+            <span class="tag">NEW</span>
+            <div class="garment tee dark"><b>WEIRD<br>BEHAVIOUR</b></div>
+          </div>
+          <div class="product-info"><span>Weird Behaviour Tee</span><strong>€32</strong><small>T-SHIRT / MADE TO ORDER</small></div>
+        </a>
+        <a class="product-card" href="#product-2">
+          <div class="product-image p-blue">
+            <span class="tag">CORE</span>
+            <div class="garment tee cream"><b>STAY<br>WEIRD</b></div>
+          </div>
+          <div class="product-info"><span>Stay Weird Tee</span><strong>€32</strong><small>T-SHIRT / MADE TO ORDER</small></div>
+        </a>
+        <a class="product-card" href="#product-3">
+          <div class="product-image p-purple">
+            <span class="tag">NEW</span>
+            <div class="garment sweatshirt dark"><b>COOKIE<br>CLUB</b></div>
+          </div>
+          <div class="product-info"><span>Cookie Club Sweatshirt</span><strong>€54</strong><small>SWEATSHIRT / MADE TO ORDER</small></div>
+        </a>
+        <a class="product-card" href="#product-4">
+          <div class="product-image p-aqua">
+            <span class="tag">LIMITED</span>
+            <div class="garment hoodie cream"><b>GOOFY<br>.EXE</b></div>
+          </div>
+          <div class="product-info"><span>Goofy Internet Hoodie</span><strong>€69</strong><small>HOODIE / MADE TO ORDER</small></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="manifesto" id="about">
+      <div class="manifesto-copy">
+        <div>
+          <div class="eyebrow">02 / THE COOKIE GOOFY RULE</div>
+          <h2>BUY LESS.<br><em>LIKE IT</em><br>MORE.</h2>
+        </div>
+        <p>We don't believe fashion has to be disposable to be fun. Our pieces are made to order, so we can focus on making something you'd actually want to keep wearing.</p>
+      </div>
+      <div class="manifesto-art">
+        <div class="manifesto-type">WEIRD<br>IS GOOD.</div>
+        <img src="assets/cookie-goofy-logo.png" alt="" class="manifesto-cookie">
+      </div>
+    </section>
+
+    <section class="section process" id="materials">
+      <div class="process-intro">
+        <div>
+          <div class="eyebrow">03 / WHY WE MAKE IT THIS WAY</div>
+          <h2>MADE<br><em>AFTER</em><br>YOU.</h2>
+        </div>
+        <p>No giant piles of unsold clothes. Your order starts the production process. It is a slower, more considered way to make clothing — and it lets Cookie Goofy keep experimenting.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step"><span>01</span><div><h3>YOU FIND SOMETHING GOOD.</h3><p>Choose a piece, pick your size and add it to your bag.</p></div><b>SHOP</b></div>
+        <div class="step"><span>02</span><div><h3>WE MAKE IT.</h3><p>Your garment enters our print-on-demand production workflow after the order.</p></div><b>MADE TO ORDER</b></div>
+        <div class="step"><span>03</span><div><h3>IT LEAVES THE GOOFY FACTORY.</h3><p>The finished piece is packed and sent towards your door.</p></div><b>DELIVERED</b></div>
+      </div>
+    </section>
+
+    <section class="editorial">
+      <div class="editorial-copy">
+        <div class="eyebrow">04 / THE POINT OF VIEW</div>
+        <h2>Fashion should be a little ridiculous.</h2>
+        <p>Not loud for the sake of being loud. Not serious for the sake of looking expensive. Just memorable enough that someone asks where you got it.</p>
+        <a class="arrow-link" href="#about">MEET COOKIE GOOFY <b>↗</b></a>
+      </div>
+      <div class="editorial-image">
+        <div>YOUR<br>EDITORIAL<br>PHOTO</div>
+        <small>CAMPAIGN IMAGE / REPLACE ME</small>
+      </div>
+    </section>
+
+    <section class="section favourites" id="shop">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">05 / THE ONES PEOPLE NOTICE</div>
+          <h2>FAVOURITES.</h2>
+        </div>
+        <span class="eyebrow">04 PIECES</span>
+      </div>
+      <div class="mini-grid">
+        <a class="mini-card" href="#product-1"><div class="mini-photo p-green"><div class="garment tee dark"><b>WEIRD<br>BEHAVIOUR</b></div></div><span>Weird Behaviour Tee</span><strong>€32</strong></a>
+        <a class="mini-card" href="#product-2"><div class="mini-photo p-blue"><div class="garment tee cream"><b>STAY<br>WEIRD</b></div></div><span>Stay Weird Tee</span><strong>€32</strong></a>
+        <a class="mini-card" href="#product-3"><div class="mini-photo p-purple"><div class="garment sweatshirt dark"><b>COOKIE<br>CLUB</b></div></div><span>Cookie Club Sweatshirt</span><strong>€54</strong></a>
+      </div>
+    </section>
+
+    <section class="club" id="club">
+      <div>
+        <div class="eyebrow">06 / THE NEWSLETTER</div>
+        <h2>COOFY<br><em>CLUB.</em></h2>
+      </div>
+      <div class="club-copy">
+        <p>Drop alerts. Behind-the-scenes nonsense. New pieces before everyone else sees them. No daily inbox torture.</p>
+        <form id="clubForm">
+          <input type="email" required placeholder="YOUR EMAIL ADDRESS">
+          <button>JOIN <b>↗</b></button>
+        </form>
+        <small id="clubMessage"></small>
+      </div>
+    </section>
+
+    <section class="section journal" id="journal">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">07 / FROM THE JOURNAL</div>
+          <h2>GOOFY <em>notes.</em></h2>
+        </div>
+        <span class="arrow-link">READ JOURNAL <b>↗</b></span>
+      </div>
+      <div class="journal-grid">
+        <article><small>01 / PROCESS</small><h3>Why made-to-order feels better.</h3><a href="#journal">READ →</a></article>
+        <article><small>02 / STYLE</small><h3>The art of looking expensive and slightly unhinged.</h3><a href="#journal">READ →</a></article>
+        <article><small>03 / CULTURE</small><h3>Things that make the internet worth staying on.</h3><a href="#journal">READ →</a></article>
+      </div>
+    </section>
+  </main>
+
+  <section class="product-modal" id="productModal" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="modal-gallery">
+        <div class="product-photo hero-photo">YOUR PRODUCT HERO PHOTO</div>
+        <div class="product-photo">FRONT PHOTO</div>
+        <div class="product-photo">DETAIL PHOTO</div>
+        <div class="product-photo">BACK PHOTO</div>
+      </div>
+      <div class="product-detail">
+        <div class="eyebrow" id="modalCategory">T-SHIRT / NEW</div>
+        <h2 id="modalTitle">Product</h2>
+        <div class="modal-price" id="modalPrice">€32</div>
+        <p id="modalDescription">Product description.</p>
+        <div class="label">SELECT SIZE</div>
+        <div class="sizes">
+          <button>XS</button><button>S</button><button class="selected">M</button><button>L</button><button>XL</button><button>2XL</button>
+        </div>
+        <button class="add-button" id="modalAdd">ADD TO BAG <b>+</b></button>
+        <div class="details-list">
+          <button>DETAILS <span>+</span></button>
+          <div>Designed for an editorial silhouette with everyday wearability. Final composition and measurements will be shown for each garment before launch.</div>
+          <button>MADE TO ORDER <span>+</span></button>
+          <div>Your piece is produced after purchase, helping avoid unnecessary inventory.</div>
+          <button>SHIPPING & RETURNS <span>+</span></button>
+          <div>Final delivery and returns information will be published before payments go live.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <aside class="cart" id="cart">
-    <div class="cart-top"><span>YOUR BAG</span><button id="cartClose">×</button></div>
+    <div class="cart-header"><span>YOUR BAG</span><button id="cartClose">×</button></div>
     <div id="cartItems"></div>
-    <div class="cart-bottom">
+    <div class="cart-footer">
       <div><span>SUBTOTAL</span><strong id="cartTotal">€0.00</strong></div>
-      <button class="black-button" id="checkoutBtn">CHECKOUT <span>↗</span></button>
-      <button class="text-button" id="continueBtn">CONTINUE SHOPPING</button>
+      <button class="add-button" id="checkout">CHECKOUT <b>↗</b></button>
+      <button class="continue" id="continueShopping">CONTINUE SHOPPING</button>
     </div>
   </aside>
-  <div class="shade" id="shade"></div>
+
+  <div class="overlay" id="overlay"></div>
   <div class="toast" id="toast"></div>
 
   <footer>
-    <div class="footer-brand"><img src="assets/cookie-goofy-logo.png" alt=""><h2>COOKIE<br>GOOFY</h2><p>STAY WEIRD.<br>EAT COOKIES.</p></div>
-    <div class="footer-col"><span>SHOP</span><a href="#/shop">All pieces</a><a href="#/new">New drop</a><a href="#/shop?cat=T-Shirts">T-Shirts</a><a href="#/shop?cat=Hoodies">Hoodies</a></div>
-    <div class="footer-col"><span>WORLD</span><a href="#/about">Our story</a><a href="#/materials">Materials</a><a href="#/journal">Journal</a><a href="#/contact">Contact</a></div>
-    <div class="footer-col"><span>HELP</span><a href="#/faq">FAQ</a><a href="#/shipping">Shipping</a><a href="#/returns">Returns</a><a href="#/size-guide">Size guide</a></div>
-    <div class="footer-col"><span>LEGAL</span><a href="#/privacy">Privacy</a><a href="#/cookies">Cookies</a><a href="#/terms">Terms</a><a href="mailto:contacto@cookiegoofy.store">Email</a></div>
+    <div class="footer-brand">
+      <img src="assets/cookie-goofy-logo.png" alt="">
+      <h2>COOKIE<br>GOOFY</h2>
+      <p>STAY WEIRD.<br>EAT COOKIES.</p>
+    </div>
+    <div class="footer-column"><b>SHOP</b><a href="#shop">All pieces</a><a href="#new">New drop</a><a href="#shop">T-Shirts</a><a href="#shop">Hoodies</a></div>
+    <div class="footer-column"><b>WORLD</b><a href="#about">Our story</a><a href="#materials">Materials</a><a href="#journal">Journal</a><a href="mailto:contacto@cookiegoofy.store">Contact</a></div>
+    <div class="footer-column"><b>HELP</b><a href="#faq">FAQ</a><a href="#shipping">Shipping</a><a href="#returns">Returns</a><a href="#size-guide">Size guide</a></div>
+    <div class="footer-column"><b>LEGAL</b><a href="#privacy">Privacy</a><a href="#cookies">Cookies</a><a href="#terms">Terms</a><a href="mailto:contacto@cookiegoofy.store">Email</a></div>
     <div class="footer-bottom"><span>© 2026 COOKIE GOOFY</span><span>MADE TO ORDER / EUROPE</span><span>contacto@cookiegoofy.store</span></div>
   </footer>
 
-  <div class="cursor" id="cursor"><img src="assets/cookie-goofy-logo.png" alt=""></div>
+  <div class="custom-cursor"><img src="assets/cookie-goofy-logo.png" alt=""></div>
   <script src="app.js"></script>
 </body>
 </html>
