@@ -1,19 +1,67 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cookie Goofy — Stay Weird. Eat Cookies.</title>
-<meta name="description" content="Cookie Goofy — independent Y2K-inspired fashion. Stay Weird. Eat Cookies.">
-<link rel="icon" href="assets/cookie-goofy-logo.png">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css"></head><body>
-<div class="loader" id="loader"><img src="assets/cookie-goofy-logo.png"><small>LOADING GOOFY...</small></div>
-<div class="announce">FREE SHIPPING OVER €75　✦　MADE TO ORDER　✦　STAY WEIRD.</div>
-<header><button class="hamb" id="hamb">☰</button><a class="logo" href="#/"><img src="assets/cookie-goofy-logo.png">COOKIE GOOFY</a>
-<nav><a href="#/shop">SHOP</a><a href="#/new">NEW</a><a href="#/about">ABOUT</a><a href="#/journal">JOURNAL</a></nav>
-<div class="actions"><button id="search">⌕</button><button id="theme">◐</button><button id="bag">BAG <b id="count">0</b></button></div></header>
-<div class="mobile-nav" id="mobileNav"><a href="#/shop">SHOP</a><a href="#/new">NEW</a><a href="#/about">ABOUT</a><a href="#/materials">MATERIALS</a><a href="#/journal">JOURNAL</a><a href="#/faq">FAQ</a></div>
-<div class="search" id="searchPanel"><div><button id="closeSearch">×</button><small>SEARCH COOKIE GOOFY</small><input id="searchInput" placeholder="hoodie, tee, weird..."><div id="results"></div></div></div>
-<main id="app"></main>
-<aside class="drawer" id="drawer"><div class="drawerHead"><h2>YOUR BAG</h2><button id="closeBag">×</button></div><div id="items"></div><div class="drawerFoot"><div><span>SUBTOTAL</span><strong id="total">€0.00</strong></div><button class="cta dark" id="checkout">CHECKOUT ↗</button><button class="plain" id="continue">CONTINUE SHOPPING</button></div></aside><div class="overlay" id="overlay"></div>
-<footer><div><img src="assets/cookie-goofy-logo.png"><strong>COOKIE GOOFY</strong><p>STAY WEIRD. EAT COOKIES.</p></div><div><b>SHOP</b><a href="#/shop">All pieces</a><a href="#/new">New drop</a><a href="#/shop?cat=T-Shirts">T-Shirts</a><a href="#/shop?cat=Hoodies">Hoodies</a></div><div><b>ABOUT</b><a href="#/about">Our story</a><a href="#/materials">Materials</a><a href="#/journal">Journal</a><a href="#/contact">Contact</a></div><div><b>HELP</b><a href="#/faq">FAQ</a><a href="#/shipping">Shipping</a><a href="#/returns">Returns</a><a href="#/size-guide">Size guide</a></div><div><b>LEGAL</b><a href="#/privacy">Privacy</a><a href="#/cookies">Cookies</a><a href="#/terms">Terms</a><a href="mailto:contacto@cookiegoofy.store">Email</a></div><small class="copy">© 2026 COOKIE GOOFY</small></footer>
-<div class="cursor" id="cursor"><img src="assets/cookie-goofy-logo.png"></div><div class="toast" id="toast"></div>
-<script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cookie Goofy — Stay Weird. Eat Cookies.</title>
+  <meta name="description" content="Cookie Goofy — weirdly premium clothing for unusual people.">
+  <link rel="icon" href="assets/cookie-goofy-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="loader" id="loader"><img src="assets/cookie-goofy-logo.png"><span>COOKIE GOOFY / LOADING...</span></div>
+
+  <div class="ticker"><div>STAY WEIRD. EAT COOKIES. <i>✦</i> MADE TO ORDER <i>✦</i> WEIRDLY PREMIUM <i>✦</i> FREE SHIPPING OVER €75 <i>✦</i> STAY WEIRD. EAT COOKIES. <i>✦</i> MADE TO ORDER <i>✦</i></div></div>
+
+  <header class="site-header">
+    <button class="menu-button" id="menuBtn" aria-label="Open menu"><span></span><span></span></button>
+    <a class="brand" href="#/"><img src="assets/cookie-goofy-logo.png" alt="Cookie Goofy"><span>COOKIE<br>GOOFY</span></a>
+    <nav class="desktop-nav">
+      <a href="#/shop">SHOP</a><a href="#/new">NEW</a><a href="#/about">ABOUT</a><a href="#/journal">JOURNAL</a>
+    </nav>
+    <div class="header-actions">
+      <button id="searchBtn">SEARCH</button><button id="themeBtn" aria-label="Toggle light and dark mode">◐</button><button id="bagBtn">BAG <sup id="bagCount">0</sup></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div><span>MENU</span><button id="mobileClose">×</button></div>
+    <a href="#/shop">SHOP EVERYTHING</a><a href="#/new">NEW DROP</a><a href="#/about">ABOUT COOKIE GOOFY</a><a href="#/materials">MATERIALS</a><a href="#/journal">JOURNAL</a><a href="#/faq">FAQ</a>
+  </div>
+
+  <section class="search-panel" id="searchPanel">
+    <button id="searchClose">×</button><span>WHAT ARE YOU LOOKING FOR?</span>
+    <input id="searchInput" placeholder="try “hoodie” or “weird”">
+    <div id="searchResults"></div>
+  </section>
+
+  <main id="app"></main>
+
+  <aside class="cart" id="cart">
+    <div class="cart-top"><span>YOUR BAG</span><button id="cartClose">×</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-bottom">
+      <div><span>SUBTOTAL</span><strong id="cartTotal">€0.00</strong></div>
+      <button class="black-button" id="checkoutBtn">CHECKOUT <span>↗</span></button>
+      <button class="text-button" id="continueBtn">CONTINUE SHOPPING</button>
+    </div>
+  </aside>
+  <div class="shade" id="shade"></div>
+  <div class="toast" id="toast"></div>
+
+  <footer>
+    <div class="footer-brand"><img src="assets/cookie-goofy-logo.png" alt=""><h2>COOKIE<br>GOOFY</h2><p>STAY WEIRD.<br>EAT COOKIES.</p></div>
+    <div class="footer-col"><span>SHOP</span><a href="#/shop">All pieces</a><a href="#/new">New drop</a><a href="#/shop?cat=T-Shirts">T-Shirts</a><a href="#/shop?cat=Hoodies">Hoodies</a></div>
+    <div class="footer-col"><span>WORLD</span><a href="#/about">Our story</a><a href="#/materials">Materials</a><a href="#/journal">Journal</a><a href="#/contact">Contact</a></div>
+    <div class="footer-col"><span>HELP</span><a href="#/faq">FAQ</a><a href="#/shipping">Shipping</a><a href="#/returns">Returns</a><a href="#/size-guide">Size guide</a></div>
+    <div class="footer-col"><span>LEGAL</span><a href="#/privacy">Privacy</a><a href="#/cookies">Cookies</a><a href="#/terms">Terms</a><a href="mailto:contacto@cookiegoofy.store">Email</a></div>
+    <div class="footer-bottom"><span>© 2026 COOKIE GOOFY</span><span>MADE TO ORDER / EUROPE</span><span>contacto@cookiegoofy.store</span></div>
+  </footer>
+
+  <div class="cursor" id="cursor"><img src="assets/cookie-goofy-logo.png" alt=""></div>
+  <script src="app.js"></script>
+</body>
+</html>

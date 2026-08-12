@@ -1,19 +1,12 @@
-# Cookie Goofy V2 — cookiegoofy.store
+# Cookie Goofy V3
 
-Static V1/V2 storefront prototype ready for GitHub Pages.
+Editorial Y2K / retro / weirdly premium storefront prototype.
 
-Included:
-- Cookie Goofy logo supplied by the owner
-- Light/dark mode
-- Y2K + retro + editorial fashion direction
-- Palette: #5EFC8D #8EF9F3 #93BEDF #8377D1 #6D5A72 plus neutral light/dark bases
-- Responsive mobile navigation
-- Smooth premium hover/micro interactions
-- Cookie-logo custom cursor on desktop
-- Homepage, shop, new, product pages, about, materials, journal, FAQ, shipping, returns, size guide, contact and legal placeholders
-- Search, filters, wishlist UI, localStorage cart and animated bag drawer
-- Product photo placeholders for the owner's editorial photography
-- Contact email: contacto@cookiegoofy.store
-- CNAME: cookiegoofy.store
+## Publish
+Upload the contents of this folder to the root of the GitHub Pages repository. Keep `CNAME` at the repository root.
 
-Phase 2: replace the demo checkout/cart flow with a real payment + Printify fulfillment architecture. Do not put private API keys in this static GitHub Pages frontend.
+## Product photos
+Replace the labelled photo placeholders in `app.js`/`styles.css` later with the final campaign/product images.
+
+## Checkout
+Checkout is intentionally a Phase 2 placeholder. Payment processing and Printify fulfilment are not connected in this static V3.
