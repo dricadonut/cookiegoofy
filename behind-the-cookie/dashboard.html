@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard — Cookie Goofy</title>
+
+  <style>
+    :root {
+      --bg: #f4f1eb;
+      --surface: #fffdf8;
+      --surface-2: #f8f5ef;
+      --text: #201c20;
+      --muted: #6d5a72;
+      --purple: #8377d1;
+      --green: #5efc8d;
+      --mint: #8ef9f3;
+      --yellow: #f6df70;
+      --red: #ff7777;
+      --border: rgba(32, 28, 32, 0.12);
+      --shadow: 0 18px 55px rgba(32, 28, 32, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 5% 5%,
+          rgba(142, 249, 243, 0.28),
+          transparent 22%
+        ),
+        radial-gradient(
+          circle at 95% 90%,
+          rgba(131, 119, 209, 0.15),
+          transparent 25%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .app {
+      width: min(1400px, 100%);
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    /* -----------------------------
+       HEADER
+    ----------------------------- */
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 42px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .brand-name {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.07em;
+      line-height: 0.9;
+    }
+
+    .brand-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .logout-button {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 16px;
+      background: rgba(255, 253, 248, 0.8);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition:
+        transform 180ms ease,
+        background 180ms ease;
+    }
+
+    .logout-button:hover {
+      transform: translateY(-2px);
+      background: var(--surface);
+    }
+
+    /* -----------------------------
+       INTRO
+    ----------------------------- */
+
+    .intro {
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      margin-bottom: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.63rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .intro h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+      max-width: 800px;
+    }
+
+    .intro p {
+      max-width: 650px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* -----------------------------
+       STAT CARDS
+    ----------------------------- */
+
+    .stats {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 38px;
+    }
+
+    .stat {
+      position: relative;
+      min-height: 150px;
+      padding: 24px;
+      background: rgba(255, 253, 248, 0.82);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .stat::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      right: -28px;
+      bottom: -30px;
+      background: rgba(131, 119, 209, 0.10);
+    }
+
+    .stat-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.61rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .stat-value {
+      margin-top: 22px;
+      font-size: 3rem;
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+
+    /* -----------------------------
+       ORDERS SECTION
+    ----------------------------- */
+
+    .orders-section {
+      background: rgba(255, 253, 248, 0.84);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+    }
+
+    .refresh-button {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: transparent;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .refresh-button:hover {
+      background: var(--surface-2);
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 850px;
+    }
+
+    th {
+      padding: 14px 20px;
+      background: var(--surface-2);
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 18px 20px;
+      border-top: 1px solid var(--border);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      vertical-align: middle;
+    }
+
+    tbody tr {
+      transition: background 150ms ease;
+    }
+
+    tbody tr:hover {
+      background: rgba(131, 119, 209, 0.045);
+    }
+
+    .order-id {
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .customer-id {
+      max-width: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(131, 119, 209, 0.10);
+      color: var(--purple);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .status.paid {
+      background: rgba(94, 252, 141, 0.14);
+      color: #23854b;
+    }
+
+    .status.pending {
+      background: rgba(246, 223, 112, 0.24);
+      color: #8b7415;
+    }
+
+    .status.shipped {
+      background: rgba(142, 249, 243, 0.22);
+      color: #267b77;
+    }
+
+    .status.cancelled {
+      background: rgba(255, 119, 119, 0.13);
+      color: #9b3d3d;
+    }
+
+    .empty {
+      padding: 70px 24px;
+      text-align: center;
+    }
+
+    .empty-symbol {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
+    .empty h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+    }
+
+    .empty p {
+      margin: 10px auto 0;
+      max-width: 430px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .loading {
+      padding: 70px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+    }
+
+    .error-box {
+      display: none;
+      margin: 20px 26px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 119, 119, 0.25);
+      border-radius: 14px;
+      background: rgba(255, 119, 119, 0.08);
+      color: #8d3434;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.76rem;
+      line-height: 1.5;
+    }
+
+    .error-box.visible {
+      display: block;
+    }
+
+    /* -----------------------------
+       FOOTER
+    ----------------------------- */
+
+    .footer {
+      padding: 30px 0 10px;
+      text-align: center;
+      color: rgba(109, 90, 114, 0.7);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* -----------------------------
+       RESPONSIVE
+    ----------------------------- */
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .app {
+        padding: 20px 14px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .brand {
+        display: block;
+      }
+
+      .brand-label {
+        display: block;
+        margin-top: 8px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .stat {
+        min-height: 125px;
+        padding: 18px;
+      }
+
+      .stat-value {
+        font-size: 2.3rem;
+      }
+
+      .section-header {
+        padding: 20px;
+      }
+
+      .intro h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header class="topbar">
+
+      <div class="brand">
+        <h2 class="brand-name">
+          cookie goofy
+        </h2>
+
+        <span class="brand-label">
+          Behind the Cookie
+        </span>
+      </div>
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+        Logout
+      </button>
+
+    </header>
+
+    <main>
+
+      <section class="intro">
+
+        <div class="eyebrow">
+          Private dashboard
+        </div>
+
+        <h1>
+          Let's see what came through the door.
+        </h1>
+
+        <p>
+          Aqui podes acompanhar as encomendas da Cookie Goofy.
+          Por agora estamos apenas a visualizar os dados.
+          As ferramentas para gerir estados e tracking serão
+          acrescentadas na próxima fase.
+        </p>
+
+      </section>
+
+      <section class="stats">
+
+        <article class="stat">
+          <div class="stat-label">
+            Total orders
+          </div>
+
+          <div
+            id="totalOrders"
+            class="stat-value"
+          >
+            —
+          </div>
+        </article>
+
+        <article class="stat">
+          <div class="stat-label">
+            Paid
+          </div>
+
+          <div
+            id="paidOrders"
+            class="stat-value"
+          >
+            —
+          </div>
+        </article>
+
+        <article class="stat">
+          <div class="stat-label">
+            Preparing
+          </div>
+
+          <div
+            id="preparingOrders"
+            class="stat-value"
+          >
+            —
+          </div>
+        </article>
+
+        <article class="stat">
+          <div class="stat-label">
+            Shipped
+          </div>
+
+          <div
+            id="shippedOrders"
+            class="stat-value"
+          >
+            —
+          </div>
+        </article>
+
+      </section>
+
+      <section class="orders-section">
+
+        <div class="section-header">
+
+          <h2 class="section-title">
+            Orders
+          </h2>
+
+          <button
+            id="refreshButton"
+            class="refresh-button"
+            type="button"
+          >
+            Refresh
+          </button>
+
+        </div>
+
+        <div
+          id="errorBox"
+          class="error-box"
+        ></div>
+
+        <div
+          id="loading"
+          class="loading"
+        >
+          A carregar encomendas...
+        </div>
+
+        <div
+          id="empty"
+          class="empty"
+          hidden
+        >
+          <div class="empty-symbol">
+            🍪
+          </div>
+
+          <h3>
+            Ainda não há encomendas.
+          </h3>
+
+          <p>
+            Quando a primeira encomenda chegar,
+            ela aparecerá aqui.
+          </p>
+        </div>
+
+        <div
+          id="tableContainer"
+          class="table-wrap"
+          hidden
+        >
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Payment</th>
+                <th>Fulfillment</th>
+                <th>Total</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+
+            <tbody id="ordersBody"></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      Cookie Goofy · Private administration
+    </footer>
+
+  </div>
+
+  <script>
+    const API_URL =
+      "https://cookie-goofy-api.dricadonut.workers.dev";
+
+    const totalOrders =
+      document.getElementById("totalOrders");
+
+    const paidOrders =
+      document.getElementById("paidOrders");
+
+    const preparingOrders =
+      document.getElementById("preparingOrders");
+
+    const shippedOrders =
+      document.getElementById("shippedOrders");
+
+    const ordersBody =
+      document.getElementById("ordersBody");
+
+    const loading =
+      document.getElementById("loading");
+
+    const empty =
+      document.getElementById("empty");
+
+    const tableContainer =
+      document.getElementById("tableContainer");
+
+    const errorBox =
+      document.getElementById("errorBox");
+
+    const refreshButton =
+      document.getElementById("refreshButton");
+
+    const logoutButton =
+      document.getElementById("logoutButton");
+
+
+    function showError(message) {
+      errorBox.textContent = message;
+      errorBox.classList.add("visible");
+    }
+
+
+    function hideError() {
+      errorBox.textContent = "";
+      errorBox.classList.remove("visible");
+    }
+
+
+    function normalize(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/[\s-]+/g, "_");
+    }
+
+
+    function statusClass(value) {
+      const normalized = normalize(value);
+
+      if (
+        normalized.includes("paid") ||
+        normalized.includes("pago")
+      ) {
+        return "paid";
+      }
+
+      if (
+        normalized.includes("pending") ||
+        normalized.includes("pending_payment") ||
+        normalized.includes("pendente")
+      ) {
+        return "pending";
+      }
+
+      if (
+        normalized.includes("shipped") ||
+        normalized.includes("enviado") ||
+        normalized.includes("fulfilled")
+      ) {
+        return "shipped";
+      }
+
+      if (
+        normalized.includes("cancel")
+      ) {
+        return "cancelled";
+      }
+
+      return "";
+    }
+
+
+    function formatStatus(value) {
+      if (!value) {
+        return "—";
+      }
+
+      return String(value)
+        .replace(/_/g, " ");
+    }
+
+
+    function formatMoney(
+      cents,
+      currency = "EUR"
+    ) {
+      if (
+        cents === null ||
+        cents === undefined
+      ) {
+        return "—";
+      }
+
+      const numeric =
+        Number(cents) / 100;
+
+      try {
+        return new Intl.NumberFormat(
+          "pt-PT",
+          {
+            style: "currency",
+            currency
+          }
+        ).format(numeric);
+
+      } catch {
+        return `${numeric.toFixed(2)} ${currency}`;
+      }
+    }
+
+
+    function formatDate(value) {
+      if (!value) {
+        return "—";
+      }
+
+      const date =
+        new Date(value);
+
+      if (
+        Number.isNaN(date.getTime())
+      ) {
+        return String(value);
+      }
+
+      return new Intl.DateTimeFormat(
+        "pt-PT",
+        {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        }
+      ).format(date);
+    }
+
+
+    function renderOrders(orders) {
+
+      totalOrders.textContent =
+        orders.length;
+
+      const paid =
+        orders.filter(order =>
+          normalize(order.payment_status)
+            .includes("paid")
+        ).length;
+
+      const shipped =
+        orders.filter(order => {
+          const status =
+            normalize(
+              order.fulfillment_status
+            );
+
+          return (
+            status.includes("shipped") ||
+            status.includes("fulfilled") ||
+            status.includes("enviado")
+          );
+        }).length;
+
+      const preparing =
+        orders.filter(order => {
+          const status =
+            normalize(
+              order.fulfillment_status
+            );
+
+          return (
+            status.includes("processing") ||
+            status.includes("preparing") ||
+            status.includes("em_production") ||
+            status.includes("production") ||
+            status.includes("prepar")
+          );
+        }).length;
+
+      paidOrders.textContent = paid;
+      preparingOrders.textContent =
+        preparing;
+      shippedOrders.textContent =
+        shipped;
+
+      ordersBody.innerHTML = "";
+
+      if (orders.length === 0) {
+
+        tableContainer.hidden = true;
+        empty.hidden = false;
+
+        return;
+      }
+
+      empty.hidden = true;
+      tableContainer.hidden = false;
+
+      for (const order of orders) {
+
+        const row =
+          document.createElement("tr");
+
+        const status =
+          formatStatus(order.status);
+
+        const payment =
+          formatStatus(
+            order.payment_status
+          );
+
+        const fulfillment =
+          formatStatus(
+            order.fulfillment_status
+          );
+
+        row.innerHTML = `
+          <td>
+            <span class="order-id">
+              ${escapeHtml(order.id)}
+            </span>
+          </td>
+
+          <td>
+            <span class="customer-id">
+              ${escapeHtml(order.customer_id)}
+            </span>
+          </td>
+
+          <td>
+            <span class="status ${statusClass(status)}">
+              ${escapeHtml(status)}
+            </span>
+          </td>
+
+          <td>
+            <span class="status ${statusClass(payment)}">
+              ${escapeHtml(payment)}
+            </span>
+          </td>
+
+          <td>
+            <span class="status ${statusClass(fulfillment)}">
+              ${escapeHtml(fulfillment)}
+            </span>
+          </td>
+
+          <td>
+            ${formatMoney(
+              order.total_cents,
+              order.currency || "EUR"
+            )}
+          </td>
+
+          <td>
+            ${formatDate(order.created_at)}
+          </td>
+        `;
+
+        ordersBody.appendChild(row);
+      }
+    }
+
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    async function checkAuthentication() {
+
+      const response =
+        await fetch(
+          `${API_URL}/api/auth-check`,
+          {
+            method: "GET",
+            credentials: "include"
+          }
+        );
+
+      if (!response.ok) {
+        window.location.href =
+          "./index.html";
+
+        return false;
+      }
+
+      const data =
+        await response.json();
+
+      if (!data.authenticated) {
+        window.location.href =
+          "./index.html";
+
+        return false;
+      }
+
+      return true;
+    }
+
+
+    async function loadOrders() {
+
+      hideError();
+
+      loading.hidden = false;
+      empty.hidden = true;
+      tableContainer.hidden = true;
+
+      try {
+
+        const authenticated =
+          await checkAuthentication();
+
+        if (!authenticated) {
+          return;
+        }
+
+        const response =
+          await fetch(
+            `${API_URL}/api/orders`,
+            {
+              method: "GET",
+              credentials: "include"
+            }
+          );
+
+        const data =
+          await response.json();
+
+        if (response.status === 401) {
+
+          window.location.href =
+            "./index.html";
+
+          return;
+        }
+
+        if (!response.ok) {
+
+          throw new Error(
+            data.error ||
+            "Não foi possível carregar as encomendas."
+          );
+        }
+
+        renderOrders(
+          Array.isArray(data.orders)
+            ? data.orders
+            : []
+        );
+
+      } catch (error) {
+
+        showError(
+          error.message ||
+          "Ocorreu um erro ao carregar as encomendas."
+        );
+
+      } finally {
+
+        loading.hidden = true;
+      }
+    }
+
+
+    async function logout() {
+
+      logoutButton.disabled = true;
+
+      try {
+
+        await fetch(
+          `${API_URL}/api/logout`,
+          {
+            method: "POST",
+            credentials: "include"
+          }
+        );
+
+      } catch {
+        // Mesmo que a API falhe,
+        // regressamos ao login.
+      }
+
+      window.location.href =
+        "./index.html";
+    }
+
+
+    refreshButton.addEventListener(
+      "click",
+      loadOrders
+    );
+
+    logoutButton.addEventListener(
+      "click",
+      logout
+    );
+
+    loadOrders();
+  </script>
+
+</body>
+</html>
